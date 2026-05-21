@@ -33,6 +33,34 @@ No requiere compilacion ni dependencias de Node. Para ejecutarla en XAMPP:
 
 La directiva `DirectoryIndex` del `.htaccess` carga `burnoutgames.html` como pantalla inicial.
 
+## Generar APK Android
+
+El proyecto Android esta en la carpeta `android/`. Actualmente no incluye Gradle Wrapper, asi que necesitas tener instalados:
+
+- Android SDK con `compileSdk 35`.
+- JDK compatible con Android Gradle Plugin 8.7.3; en esta maquina se ha validado con Java 21.
+- Gradle disponible en el `PATH`.
+
+Para compilar el APK de debug desde PowerShell:
+
+```powershell
+cd android
+gradle :app:assembleDebug
+```
+
+El APK se genera en:
+
+```text
+android/app/build/outputs/apk/debug/app-debug.apk
+```
+
+Si se anade Gradle Wrapper al proyecto mas adelante, el comando equivalente desde Windows seria:
+
+```powershell
+cd android
+.\gradlew.bat :app:assembleDebug
+```
+
 ## PWA y modo offline
 
 La aplicacion registra `burnoutgames-sw.js` desde `assets/js/burnoutgames_pwa.js`.
