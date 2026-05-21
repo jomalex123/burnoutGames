@@ -1,0 +1,4 @@
+com.burnoutairsoft.burnoutgames:style/AppTheme = 0x7f040000
+com.burnoutairsoft.burnoutgames:drawable/logo_burnout = 0x7f020000
+com.burnoutairsoft.burnoutgames:string/app_name = 0x7f030000
+com.burnoutairsoft.burnoutgames:color/burnout_black = 0x7f010000

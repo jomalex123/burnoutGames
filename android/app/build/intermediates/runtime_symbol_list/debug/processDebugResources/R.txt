@@ -1,0 +1,4 @@
+int color burnout_black 0x7f010000
+int drawable logo_burnout 0x7f020000
+int string app_name 0x7f030000
+int style AppTheme 0x7f040000

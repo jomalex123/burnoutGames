@@ -1,0 +1,7 @@
+com.burnoutairsoft.burnoutgames.app-pngs-0 D:\xampp\htdocs\burnoutGames\android\app\build\generated\res\pngs\debug
+com.burnoutairsoft.burnoutgames.app-resValues-1 D:\xampp\htdocs\burnoutGames\android\app\build\generated\res\resValues\debug
+com.burnoutairsoft.burnoutgames.app-packageDebugResources-2 D:\xampp\htdocs\burnoutGames\android\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.burnoutairsoft.burnoutgames.app-packageDebugResources-3 D:\xampp\htdocs\burnoutGames\android\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.burnoutairsoft.burnoutgames.app-debug-4 D:\xampp\htdocs\burnoutGames\android\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.burnoutairsoft.burnoutgames.app-debug-5 D:\xampp\htdocs\burnoutGames\android\app\src\debug\res
+com.burnoutairsoft.burnoutgames.app-main-6 D:\xampp\htdocs\burnoutGames\android\app\src\main\res

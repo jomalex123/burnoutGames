@@ -1,0 +1,6 @@
+R_DEF: Internal format may change without notice
+local
+color burnout_black
+drawable logo_burnout
+string app_name
+style AppTheme
