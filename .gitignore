@@ -147,7 +147,14 @@ vite.config.ts.timestamp-*
 **/.gradle/
 build/
 **/build/
+android/.gradle/
+android/build/
+android/app/build/
 local.properties
+android/local.properties
+.externalNativeBuild/
+.cxx/
+captures/
 *.apk
 *.aab
 *.ap_
