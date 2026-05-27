@@ -23,7 +23,7 @@ button {
   align-items: stretch;
   background:
     radial-gradient(circle at 25% 12%, rgba(255, 34, 50, .24), transparent 30%),
-    radial-gradient(circle at 75% 12%, rgba(26, 118, 255, .24), transparent 30%),
+    radial-gradient(circle at 75% 12%, rgba(255, 210, 35, .22), transparent 30%),
     #050608;
   display: flex;
   min-height: 100svh;
@@ -109,22 +109,22 @@ button {
   background: #7a060b;
 }
 
-.police-button--blue {
-  background: #063a86;
+.police-button--yellow {
+  background: #8a6500;
 }
 
-.is-red .police-button--blue,
-.is-blue .police-button--red {
+.is-red .police-button--yellow,
+.is-yellow .police-button--red {
   filter: brightness(.46) saturate(.75);
 }
 
-.is-red .police-button--blue::after,
-.is-blue .police-button--red::after {
+.is-red .police-button--yellow::after,
+.is-yellow .police-button--red::after {
   opacity: .72;
 }
 
 .is-red .police-button--red,
-.is-blue .police-button--blue {
+.is-yellow .police-button--yellow {
   border-color: rgba(255, 255, 255, .42);
   filter: brightness(1.08) saturate(1.18);
   transform: translateY(4px);
@@ -140,23 +140,23 @@ button {
     0 16px 36px rgba(0, 0, 0, .5);
 }
 
-.is-blue .police-button--blue {
-  background: #1294ff;
+.is-yellow .police-button--yellow {
+  background: #ffd423;
   box-shadow:
     inset 0 5px 18px rgba(255, 255, 255, .34),
-    inset 0 -26px 42px rgba(0, 28, 112, .42),
-    0 0 34px rgba(18, 148, 255, .86),
-    0 0 86px rgba(18, 148, 255, .42),
+    inset 0 -26px 42px rgba(130, 82, 0, .42),
+    0 0 34px rgba(255, 212, 35, .86),
+    0 0 86px rgba(255, 212, 35, .42),
     0 16px 36px rgba(0, 0, 0, .5);
 }
 
 .is-red .police-button--red::before,
-.is-blue .police-button--blue::before {
+.is-yellow .police-button--yellow::before {
   opacity: .7;
 }
 
 .is-red .police-button--red::after,
-.is-blue .police-button--blue::after {
+.is-yellow .police-button--yellow::after {
   animation: led-pulse 900ms ease-in-out infinite;
 }
 

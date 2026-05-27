@@ -5,8 +5,17 @@ Aplicacion web estatica/PWA con minijuegos para partidas de Burnout Airsoft.
 ## Juegos incluidos
 
 - **Bomba C4**: configura un tiempo en formato `MMSS`, define un codigo de desactivacion, espera el armado y manten pulsado `#` para activar la cuenta atras.
-- **Dominio de banderas**: cronometro de control por equipos con botones rojo y azul.
-- **Interruptores**: pendiente de desarrollo.
+- **Dominio de banderas**: cronometro de control por equipos con botones rojo y amarillo.
+- **Windows**: prueba piloto con escritorio tipo Windows 98, login, CMD y mapa tactico.
+
+## Credenciales Windows
+
+| Documento | Usuario | Contrasena |
+| --- | --- | --- |
+| `TOP_SECRET.doc` | `agente_47` | `12345` |
+| `inventario.doc` | `dimitri` | `tarkof` |
+| `radio_codes.txt` | `burnout` | `P@ssw0rd` |
+| `zona_operaciones.doc` | `agente_47` | `Re3ZKuG7` |
 
 ## Estructura
 
@@ -15,6 +24,7 @@ Aplicacion web estatica/PWA con minijuegos para partidas de Burnout Airsoft.
 |-- burnoutgames.html              # Menu principal
 |-- burnoutgames_c4.html           # Juego Bomba C4
 |-- burnoutgames_dominio.html      # Juego Dominio de banderas
+|-- burnoutgames_windows.html      # Juego Windows
 |-- burnoutgames.webmanifest       # Manifest de la PWA
 |-- burnoutgames-sw.js             # Service worker para uso offline
 |-- assets/

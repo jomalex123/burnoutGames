@@ -27,6 +27,11 @@
       "name": "Dominio",
       "short_name": "Dominio",
       "url": "burnoutgames_dominio.html"
+    },
+    {
+      "name": "Windows",
+      "short_name": "Windows",
+      "url": "burnoutgames_windows.html"
     }
   ]
 }

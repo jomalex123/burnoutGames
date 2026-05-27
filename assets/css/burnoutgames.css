@@ -57,7 +57,7 @@ a {
 .games-grid {
   display: grid;
   gap: 18px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .game-card {
@@ -105,10 +105,6 @@ a {
 
 .game-card:hover {
   border-color: rgba(255, 59, 48, .78);
-}
-
-.game-card--disabled {
-  opacity: .58;
 }
 
 @media (max-width: 900px) {

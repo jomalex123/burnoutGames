@@ -4,7 +4,7 @@
   var activeTeam = '';
   var counters = {
     red: 0,
-    blue: 0
+    yellow: 0
   };
   var timerId = null;
 
@@ -22,7 +22,7 @@
   }
 
   function setActiveTeam(team) {
-    if (team !== 'red' && team !== 'blue') {
+    if (team !== 'red' && team !== 'yellow') {
       return;
     }
 
@@ -37,7 +37,7 @@
     }
 
     timerId = window.setInterval(function() {
-      if (activeTeam === 'red' || activeTeam === 'blue') {
+      if (activeTeam === 'red' || activeTeam === 'yellow') {
         counters[activeTeam] += 1;
       }
 
@@ -53,7 +53,7 @@
       return;
     }
 
-    page.classList.remove('is-red', 'is-blue');
+    page.classList.remove('is-red', 'is-yellow');
 
     if (activeTeam) {
       page.classList.add('is-' + activeTeam);

@@ -1,18 +1,42 @@
-const BURNOUT_GAMES_CACHE = 'burnout-games-v1';
+const BURNOUT_GAMES_CACHE = 'burnout-games-v4';
 
 const BURNOUT_GAMES_ASSETS = [
   './burnoutgames.html',
   './burnoutgames_c4.html',
   './burnoutgames_dominio.html',
+  './burnoutgames_windows.html',
   './burnoutgames.webmanifest',
   './assets/css/burnoutgames.css',
   './assets/css/burnoutgames_c4.css',
   './assets/css/burnoutgames_dominio.css',
+  './assets/css/burnoutgames_windows.css',
   './assets/js/burnoutgames.js',
   './assets/js/burnoutgames_c4.js',
   './assets/js/burnoutgames_dominio.js',
+  './assets/js/burnoutgames_windows.js',
   './assets/js/burnoutgames_pwa.js',
-  './images/resources/logoBurnout-3.png'
+  './images/resources/logoBurnout-3.png',
+  './images/resources/windows/back.png',
+  './images/resources/windows/burnout.png',
+  './images/resources/windows/cd_drive-0.png',
+  './images/resources/windows/computer-0.png',
+  './images/resources/windows/computer_explorer-2.png',
+  './images/resources/windows/console_prompt-0.png',
+  './images/resources/windows/directory_open_file_mydocs-4.png',
+  './images/resources/windows/floppy_drive_3_5-0.png',
+  './images/resources/windows/forward.png',
+  './images/resources/windows/hard_disk_drive_cool-0.png',
+  './images/resources/windows/mapa-local.jpg',
+  './images/resources/windows/mapa.jpg',
+  './images/resources/windows/msie1-0.png',
+  './images/resources/windows/network_drive_cool-0.png',
+  './images/resources/windows/network_normal_two_pcs-2.png',
+  './images/resources/windows/recycle_bin_empty-2.png',
+  './images/resources/windows/search.png',
+  './images/resources/windows/thumb.jpeg',
+  './images/resources/windows/thumb.png',
+  './images/resources/windows/up.png',
+  './images/resources/windows/windows-0.png'
 ];
 
 self.addEventListener('install', function(event) {

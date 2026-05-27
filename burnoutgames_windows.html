@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Windows - Burnout Games</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#008080">
+    <link rel="icon" type="image/png" href="images/resources/logoBurnout-3.png" />
+    <link rel="apple-touch-icon" href="images/resources/logoBurnout-3.png">
+    <link rel="manifest" href="burnoutgames.webmanifest">
+    <link rel="stylesheet" href="assets/css/burnoutgames_windows.css">
+  </head>
+  <body>
+    <main class="windows-page" aria-label="Juego Windows">
+      <section class="login-screen" id="loginScreen" aria-label="Inicio de sesion">
+        <form class="win-window login-window" id="loginForm">
+          <div class="win-titlebar">
+            <span>Iniciar sesion</span>
+            <div class="win-controls" aria-hidden="true">
+              <button type="button">_</button>
+              <button type="button">□</button>
+              <button type="button">x</button>
+            </div>
+          </div>
+          <div class="win-body login-body">
+            <label for="loginUser">Usuario:</label>
+            <input id="loginUser" name="usuario" type="text" autocomplete="off" inputmode="text" placeholder="Usuario">
+            <label for="loginPassword">Contrasena:</label>
+            <input id="loginPassword" name="clave" type="password" autocomplete="off" placeholder="Contrasena">
+            <p class="login-error" id="loginError" role="alert"></p>
+            <div class="button-row">
+              <button class="win-button" type="submit">Iniciar sesion</button>
+              <button class="win-button" type="button" data-action="clear-login">Cancelar</button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <section class="desktop" aria-label="Escritorio">
+        <div class="desktop-icons" aria-label="Accesos directos">
+          <button class="desktop-icon" type="button" data-window="computerWindow">
+            <img src="images/resources/windows/computer_explorer-2.png" alt="">
+            <span>Mi Ordenador</span>
+          </button>
+          <button class="desktop-icon" type="button" data-computer-shortcut="documents">
+            <img src="images/resources/windows/directory_open_file_mydocs-4.png" alt="">
+            <span>Mis Documentos</span>
+          </button>
+          <button class="desktop-icon" type="button" data-window="internetWindow">
+            <img src="images/resources/windows/msie1-0.png" alt="">
+            <span>Internet Explorer</span>
+          </button>
+          <button class="desktop-icon" type="button" data-window="networkWindow">
+            <img src="images/resources/windows/network_normal_two_pcs-2.png" alt="">
+            <span>Configurar Red</span>
+          </button>
+          <button class="desktop-icon" type="button" data-window="cmdWindow">
+            <img src="images/resources/windows/console_prompt-0.png" alt="">
+            <span>CMD</span>
+          </button>
+          <button class="desktop-icon" type="button" data-window="binWindow">
+            <img src="images/resources/windows/recycle_bin_empty-2.png" alt="">
+            <span>Papelera</span>
+          </button>
+        </div>
+
+        <article class="win-window app-window computer-window" id="computerWindow" aria-label="Mi Ordenador">
+          <div class="win-titlebar" data-drag-handle>
+            <span id="computerWindowTitle">Mi Ordenador</span>
+            <div class="win-controls">
+              <button type="button" data-action="minimize" aria-label="Minimizar">_</button>
+              <button type="button" aria-label="Maximizar">□</button>
+              <button type="button" data-close="computerWindow" aria-label="Cerrar">x</button>
+            </div>
+          </div>
+          <div class="win-menu">
+            <span>Archivo</span>
+            <span>Editar</span>
+            <span>Ver</span>
+            <span>Ir</span>
+            <span>Favoritos</span>
+            <span>Ayuda</span>
+          </div>
+          <div class="win-toolbar">
+            <button class="toolbar-button" type="button" data-action="computer-back" aria-label="Atras">
+              <img src="images/resources/windows/back.png" alt="">
+            </button>
+            <button class="toolbar-button" type="button" data-action="computer-forward" aria-label="Adelante">
+              <img src="images/resources/windows/forward.png" alt="">
+            </button>
+            <button class="toolbar-button" type="button" data-action="computer-back" aria-label="Subir un nivel">
+              <img src="images/resources/windows/up.png" alt="">
+            </button>
+            <button class="toolbar-button" type="button" aria-label="Buscar">
+              <img src="images/resources/windows/search.png" alt="">
+            </button>
+          </div>
+          <div class="address-bar">
+            <label for="computerAddress">Direccion:</label>
+            <input id="computerAddress" type="text" value="Mi Ordenador" readonly>
+          </div>
+          <div class="computer-content" id="computerContent">
+            <button class="pc-icon" type="button" data-computer-open="c">
+              <img src="images/resources/windows/hard_disk_drive_cool-0.png" alt="">
+              <span>Disco local (C:)</span>
+            </button>
+            <button class="pc-icon" type="button">
+              <img src="images/resources/windows/floppy_drive_3_5-0.png" alt="">
+              <span>Unidad de disquete (A:)</span>
+            </button>
+            <button class="pc-icon" type="button">
+              <img src="images/resources/windows/network_drive_cool-0.png" alt="">
+              <span>Entorno de red</span>
+            </button>
+            <button class="pc-icon" type="button">
+              <img src="images/resources/windows/cd_drive-0.png" alt="">
+              <span>Unidad CD (G:)</span>
+            </button>
+          </div>
+          <div class="status-bar">
+            <span id="computerStatusCount">4 objeto(s)</span>
+            <span>Espacio libre: 6,07 GB</span>
+            <span><img src="images/resources/windows/computer-0.png" alt=""> Mi PC</span>
+          </div>
+        </article>
+
+        <article class="win-window app-window network-window" id="networkWindow" aria-label="Configurar Red">
+          <div class="win-titlebar" data-drag-handle>
+            <span>Configurar Red</span>
+            <div class="win-controls">
+              <button type="button" data-action="minimize" aria-label="Minimizar">_</button>
+              <button type="button" aria-label="Maximizar">□</button>
+              <button type="button" data-close="networkWindow" aria-label="Cerrar">x</button>
+            </div>
+          </div>
+          <div class="win-menu">
+            <span>Archivo</span>
+            <span>Editar</span>
+            <span>Ver</span>
+            <span>Herramientas</span>
+            <span>Ayuda</span>
+          </div>
+          <div class="win-toolbar">
+            <button class="toolbar-button" type="button" aria-label="Atras">
+              <img src="images/resources/windows/back.png" alt="">
+            </button>
+            <button class="toolbar-button" type="button" aria-label="Adelante">
+              <img src="images/resources/windows/forward.png" alt="">
+            </button>
+            <button class="toolbar-button" type="button" aria-label="Buscar">
+              <img src="images/resources/windows/search.png" alt="">
+            </button>
+          </div>
+          <div class="address-bar">
+            <label for="networkAddress">Direccion:</label>
+            <input id="networkAddress" type="text" value="Panel de control\Red" readonly>
+          </div>
+          <div class="network-content">
+            <div class="network-item is-disabled">
+              <img src="images/resources/windows/network_drive_cool-0.png" alt="">
+              <div>
+                <strong>Conexion de red local</strong>
+                <span>Deshabilitada</span>
+              </div>
+            </div>
+            <div class="network-item is-disabled">
+              <img src="images/resources/windows/network_normal_two_pcs-2.png" alt="">
+              <div>
+                <strong>Conexion de red WiFi</strong>
+                <span>Deshabilitada</span>
+              </div>
+            </div>
+          </div>
+          <div class="status-bar">
+            <span>2 conexion(es)</span>
+            <span>Sin acceso de red</span>
+            <span><img src="images/resources/windows/network_normal_two_pcs-2.png" alt=""> Red</span>
+          </div>
+        </article>
+
+        <article class="win-window app-window note-window" id="internetWindow" aria-label="Internet Explorer">
+          <div class="win-titlebar" data-drag-handle>
+            <span>Internet Explorer</span>
+            <div class="win-controls">
+              <button type="button" data-action="minimize" aria-label="Minimizar">_</button>
+              <button type="button" aria-label="Maximizar">□</button>
+              <button type="button" data-close="internetWindow" aria-label="Cerrar">x</button>
+            </div>
+          </div>
+          <div class="browser-content">
+            <img src="images/resources/windows/burnout.png" alt="Burnout Airsoft">
+            <strong>Burnout Airsoft Windows</strong>
+            <span>Conexión deshabilitada</span>
+          </div>
+        </article>
+
+        <article class="win-window app-window cmd-window" id="cmdWindow" aria-label="CMD">
+          <div class="win-titlebar" data-drag-handle>
+            <span id="cmdWindowTitle">CMD.EXE</span>
+            <div class="win-controls">
+              <button type="button" data-action="minimize" aria-label="Minimizar">_</button>
+              <button type="button" aria-label="Maximizar">□</button>
+              <button type="button" data-close="cmdWindow" aria-label="Cerrar">x</button>
+            </div>
+          </div>
+          <div class="cmd-content" id="cmdContent">
+            <p id="cmdTitle">*** SISTEMA DE ACCESO SECRETO ***</p>
+            <p id="cmdContext">Usuario: agente_47<br>Acceso: restringido</p>
+            <div id="cmdCodeFields">
+              <label for="codeInput">&gt;&gt; Ingresar codigo de activacion:</label>
+              <div class="cmd-entry">
+                <span class="blink">_</span>
+                <input id="codeInput" type="text" autocomplete="off" inputmode="numeric">
+                <button class="cmd-submit" type="button" data-action="submit-code">OK</button>
+              </div>
+            </div>
+            <div id="cmdIdleFields" hidden>
+              <p>Microsoft(R) Windows 98</p>
+              <p>Copyright (C) 1981-1998 Microsoft Corp.</p>
+              <label for="cmdIdleInput">C:\WINDOWS&gt;</label>
+              <div class="cmd-entry">
+                <span class="blink">_</span>
+                <input id="cmdIdleInput" type="text" autocomplete="off" inputmode="text">
+              </div>
+            </div>
+            <div id="cmdAuthFields" hidden>
+              <div id="cmdUserFields">
+                <label for="cmdUserInput">&gt;&gt; Usuario:</label>
+                <div class="cmd-entry">
+                  <span class="blink">_</span>
+                  <input id="cmdUserInput" type="text" autocomplete="off" inputmode="text">
+                </div>
+              </div>
+              <div id="cmdPasswordFields" hidden>
+                <label for="cmdPasswordInput">&gt;&gt; Contrasena:</label>
+                <div class="cmd-entry">
+                  <span class="blink">_</span>
+                  <input id="cmdPasswordInput" type="password" autocomplete="off">
+                  <button class="cmd-submit" type="button" data-action="submit-document-auth" hidden>OK</button>
+                </div>
+              </div>
+            </div>
+            <p class="cmd-error" id="cmdError" role="status"></p>
+          </div>
+        </article>
+
+        <article class="win-window app-window map-window" id="mapWindow" aria-label="Coordenadas Secretas">
+          <div class="win-titlebar" data-drag-handle>
+            <span id="mapWindowTitle">Coordenadas Secretas</span>
+            <div class="win-controls">
+              <button type="button" data-action="minimize" aria-label="Minimizar">_</button>
+              <button type="button" aria-label="Maximizar">□</button>
+              <button type="button" data-close="mapWindow" aria-label="Cerrar">x</button>
+            </div>
+          </div>
+          <div class="map-panel" id="mapPanel" aria-label="Mapa tactico">
+            <button class="map-point" type="button" style="left: 27.9%; top: 13.4%;" data-message="Punto 1: zona de reconocimiento"></button>
+            <button class="map-point" type="button" style="left: 42.8%; top: 39.9%;" data-message="Punto 2: ruta de entrada"></button>
+            <button class="map-point" type="button" style="left: 43.6%; top: 63.9%;" data-message="Punto 3: posicion defensiva"></button>
+            <button class="map-point" type="button" style="left: 63.2%; top: 63.8%;" data-message="Punto 4: extraccion"></button>
+          </div>
+        </article>
+
+        <article class="win-window app-window note-window radio-window" id="radioWindow" aria-label="Radio HQ">
+          <div class="win-titlebar" data-drag-handle>
+            <span>radio_codes.txt - Bloc de notas</span>
+            <div class="win-controls">
+              <button type="button" data-action="minimize" aria-label="Minimizar">_</button>
+              <button type="button" aria-label="Maximizar">□</button>
+              <button type="button" data-close="radioWindow" aria-label="Cerrar">x</button>
+            </div>
+          </div>
+          <div class="notepad-content">
+            <p>Radio HQ</p>
+            <p>Banda PMR 446.04375 MHz</p>
+            <p>Subtono CTCSS 85.4 Hz</p>
+          </div>
+        </article>
+
+        <article class="win-window app-window note-window" id="binWindow" aria-label="Papelera">
+          <div class="win-titlebar" data-drag-handle>
+            <span>Papelera de Reciclaje</span>
+            <div class="win-controls">
+              <button type="button" data-action="minimize" aria-label="Minimizar">_</button>
+              <button type="button" aria-label="Maximizar">□</button>
+              <button type="button" data-close="binWindow" aria-label="Cerrar">x</button>
+            </div>
+          </div>
+          <div class="empty-folder">La carpeta esta vacia.</div>
+        </article>
+
+      </section>
+    </main>
+    <script src="assets/js/burnoutgames_windows.js"></script>
+    <script src="assets/js/burnoutgames_pwa.js"></script>
+  </body>
+</html>
