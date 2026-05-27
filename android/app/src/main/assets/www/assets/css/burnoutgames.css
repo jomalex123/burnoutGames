@@ -48,10 +48,12 @@ a {
 }
 
 .games-hero h1 {
-  color: #fff;
+  color: #ff0000;
   font-size: 64px;
-  line-height: .95;
-  margin: 10px 0 0;
+  font-weight: 800;
+  line-height: 1;
+  margin: 0;
+  text-transform: uppercase;
 }
 
 .games-grid {
