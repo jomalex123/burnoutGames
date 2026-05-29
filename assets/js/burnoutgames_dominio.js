@@ -7,6 +7,8 @@
     yellow: 0
   };
   var timerId = null;
+  var pauseTimerId = null;
+  var isPaused = false;
 
   document.addEventListener('DOMContentLoaded', function() {
     bindControls();
@@ -19,6 +21,15 @@
         setActiveTeam(button.getAttribute('data-team') || '');
       });
     });
+
+    var counter = document.getElementById('dominioCounter');
+
+    if (counter) {
+      counter.addEventListener('pointerdown', startPauseHold);
+      counter.addEventListener('pointerup', cancelPauseHold);
+      counter.addEventListener('pointerleave', cancelPauseHold);
+      counter.addEventListener('pointercancel', cancelPauseHold);
+    }
   }
 
   function setActiveTeam(team) {
@@ -27,7 +38,11 @@
     }
 
     activeTeam = team;
-    startCounter();
+
+    if (!isPaused) {
+      startCounter();
+    }
+
     updateDisplay();
   }
 
@@ -45,6 +60,43 @@
     }, 1000);
   }
 
+  function stopCounter() {
+    if (timerId) {
+      window.clearInterval(timerId);
+      timerId = null;
+    }
+  }
+
+  function startPauseHold() {
+    cancelPauseHold();
+
+    if (isPaused || !activeTeam) {
+      return;
+    }
+
+    pauseTimerId = window.setTimeout(function() {
+      pauseTimerId = null;
+      pauseGame();
+    }, 3000);
+  }
+
+  function cancelPauseHold() {
+    if (pauseTimerId) {
+      window.clearTimeout(pauseTimerId);
+      pauseTimerId = null;
+    }
+  }
+
+  function pauseGame() {
+    if (isPaused) {
+      return;
+    }
+
+    isPaused = true;
+    stopCounter();
+    updateDisplay();
+  }
+
   function updateDisplay() {
     var page = document.querySelector('.dominio-page');
     var counter = document.getElementById('dominioCounter');
@@ -53,10 +105,14 @@
       return;
     }
 
-    page.classList.remove('is-red', 'is-yellow');
+    page.classList.remove('is-red', 'is-yellow', 'is-paused');
 
     if (activeTeam) {
       page.classList.add('is-' + activeTeam);
+    }
+
+    if (isPaused) {
+      page.classList.add('is-paused');
     }
 
     counter.textContent = formatTime(activeTeam ? counters[activeTeam] : 0);

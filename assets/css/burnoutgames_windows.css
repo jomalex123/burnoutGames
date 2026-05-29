@@ -1,3 +1,5 @@
+@import url("https://fonts.cdnfonts.com/css/28-days-later");
+
 * {
   box-sizing: border-box;
 }
@@ -11,7 +13,7 @@ body {
 body {
   background: #008080;
   color: #000;
-  font-family: Tahoma, "MS Sans Serif", Arial, sans-serif;
+  font-family: "28 Days Later", Tahoma, "MS Sans Serif", Arial, sans-serif;
   overflow: hidden;
 }
 
@@ -443,7 +445,7 @@ button {
 .cmd-content {
   background: #000;
   color: #00ff00;
-  font-family: "Courier New", monospace;
+  font-family: "28 Days Later", "Courier New", monospace;
   font-size: 17px;
   height: calc(100% - 26px);
   overflow: auto;
@@ -558,7 +560,7 @@ button {
 .notepad-content {
   background: #fff;
   color: #000;
-  font-family: "Courier New", monospace;
+  font-family: "28 Days Later", "Courier New", monospace;
   font-size: 18px;
   min-height: 240px;
   padding: 18px;
@@ -574,7 +576,7 @@ button {
   color: #ff2020;
   display: flex;
   flex-direction: column;
-  font-family: "Courier New", monospace;
+  font-family: "28 Days Later", "Courier New", monospace;
   font-size: 32px;
   font-weight: 700;
   gap: 22px;

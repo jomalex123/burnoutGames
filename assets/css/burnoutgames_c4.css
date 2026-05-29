@@ -1,3 +1,5 @@
+@import url("https://fonts.cdnfonts.com/css/28-days-later");
+
 * {
   box-sizing: border-box;
 }
@@ -14,7 +16,7 @@ body {
     linear-gradient(135deg, rgba(9, 11, 13, .96), rgba(31, 36, 32, .94)),
     repeating-linear-gradient(45deg, #171a17 0 18px, #20251f 18px 36px);
   color: #f2f2ec;
-  font-family: Arial, sans-serif;
+  font-family: "28 Days Later", Arial, sans-serif;
   overflow: hidden;
 }
 
@@ -125,6 +127,11 @@ button {
   animation: bomb-led-blink .55s steps(2, start) infinite;
 }
 
+.bomb-device.is-wrong-code .bomb-led--red {
+  animation: bomb-led-blink .3s steps(2, start) infinite;
+  opacity: 1;
+}
+
 @keyframes bomb-led-blink {
   50% {
     opacity: .18;
@@ -172,7 +179,7 @@ button {
 
 .bomb-lcd__top {
   display: flex;
-  font-family: "Courier New", monospace;
+  font-family: "28 Days Later", "Courier New", monospace;
   font-size: 13px;
   font-weight: 800;
   justify-content: space-between;
@@ -180,7 +187,7 @@ button {
 }
 
 .bomb-time {
-  font-family: "Courier New", monospace;
+  font-family: "28 Days Later", "Courier New", monospace;
   font-size: 64px;
   font-weight: 900;
   line-height: 1;
@@ -190,7 +197,7 @@ button {
 
 .bomb-entry {
   border-bottom: 2px solid rgba(16, 36, 17, .58);
-  font-family: "Courier New", monospace;
+  font-family: "28 Days Later", "Courier New", monospace;
   font-size: 26px;
   font-weight: 800;
   min-height: 34px;
@@ -200,13 +207,18 @@ button {
 }
 
 .bomb-message {
-  font-family: "Courier New", monospace;
+  font-family: "28 Days Later", "Courier New", monospace;
   font-size: 12px;
   font-weight: 800;
   margin-top: 12px;
   min-height: 20px;
   text-align: center;
   text-transform: uppercase;
+}
+
+.bomb-device.is-wrong-code .bomb-message {
+  color: #b00000;
+  text-shadow: 0 0 10px rgba(176, 0, 0, .45);
 }
 
 .bomb-keypad {
@@ -244,6 +256,11 @@ button {
 
 .bomb-keypad button:active {
   transform: translateY(1px);
+}
+
+.bomb-device.is-input-locked .bomb-keypad button {
+  filter: brightness(.62);
+  pointer-events: none;
 }
 
 .bomb-keypad .key-muted {

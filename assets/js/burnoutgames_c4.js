@@ -1,22 +1,25 @@
 (function() {
   'use strict';
 
+  var ACCESS_CODE = '5539852';
   var MAX_CODE_LENGTH = 8;
   var MAX_TIME_DIGITS = 4;
   var WRONG_CODE_PENALTY = 15;
+  var WRONG_CODE_LOCK_MS = 3000;
 
   var timerId = null;
   var beepTimerId = null;
   var alarmTimerId = null;
   var armingTimerId = null;
   var holdTimerId = null;
+  var wrongCodeTimerId = null;
   var audioContext = null;
   var lastClearAt = 0;
   var submitHoldHandled = false;
+  var isInputLocked = false;
   var endTime = 0;
   var configuredSeconds = 300;
   var remainingSeconds = 300;
-  var defuseCode = '';
   var state = 'setup-time';
   var entry = '';
 
@@ -28,6 +31,10 @@
   function bindBomb() {
     document.querySelectorAll('[data-bomb-key]').forEach(function(button) {
       button.addEventListener('click', function() {
+        if (isInputLocked) {
+          return;
+        }
+
         ensureAudioContext();
         pressKey(button.getAttribute('data-bomb-key'));
       });
@@ -37,13 +44,22 @@
       button.addEventListener('click', function() {
         var action = button.getAttribute('data-bomb-action');
 
+        if (isInputLocked) {
+          return;
+        }
+
         ensureAudioContext();
 
         if (action === 'clear') {
           handleClear();
         }
 
-        if (action === 'submit' && !submitHoldHandled) {
+        if (action === 'submit' && submitHoldHandled && !entry) {
+          submitHoldHandled = false;
+          return;
+        }
+
+        if (action === 'submit') {
           submitEntry();
         }
 
@@ -60,6 +76,10 @@
   }
 
   function pressKey(key) {
+    if (isInputLocked) {
+      return;
+    }
+
     lastClearAt = 0;
 
     if (state === 'setup-time') {
@@ -95,6 +115,10 @@
   }
 
   function submitEntry() {
+    if (isInputLocked) {
+      return;
+    }
+
     lastClearAt = 0;
 
     if (state === 'setup-time') {
@@ -139,7 +163,7 @@
     remainingSeconds = configuredSeconds;
     entry = '';
     state = 'setup-code';
-    setMessage('INTRODUCE CODIGO');
+    setMessage('INTRODUCE CODIGO ACTIVACION');
     updateDisplay();
   }
 
@@ -149,7 +173,11 @@
       return;
     }
 
-    defuseCode = entry;
+    if (entry !== ACCESS_CODE) {
+      showWrongCodeLockout();
+      return;
+    }
+
     entry = '';
     state = 'arming-device';
     setMessage('ARMANDO DISPOSITIVO');
@@ -163,28 +191,63 @@
       return;
     }
 
-    if (entry === defuseCode) {
+    if (entry === ACCESS_CODE) {
       defuseBomb();
       return;
     }
 
+    applyWrongDefusePenalty();
+    showWrongCodeLockout();
+  }
+
+  function applyWrongDefusePenalty() {
     remainingSeconds = Math.max(0, remainingSeconds - WRONG_CODE_PENALTY);
     endTime = Date.now() + remainingSeconds * 1000;
-    entry = '';
-    setMessage('CODIGO INCORRECTO');
 
     if (remainingSeconds <= 0) {
       explodeBomb();
+    }
+  }
+
+  function showWrongCodeLockout() {
+    if (state === 'exploded') {
       return;
     }
 
+    entry = '';
+    isInputLocked = true;
+    stopSubmitHold();
+    setMessage('CODIGO ERRONEO');
     updateDisplay();
+
+    if (wrongCodeTimerId) {
+      window.clearTimeout(wrongCodeTimerId);
+    }
+
+    wrongCodeTimerId = window.setTimeout(function() {
+      wrongCodeTimerId = null;
+      isInputLocked = false;
+
+      if (state === 'setup-code') {
+        setMessage('INTRODUCE CODIGO ACTIVACION');
+      } else if (state === 'armed') {
+        setMessage('INTRODUCE CODIGO');
+      } else {
+        restoreStateMessage();
+      }
+
+      updateDisplay();
+    }, WRONG_CODE_LOCK_MS);
   }
 
   function handleClear() {
+    if (isInputLocked) {
+      return;
+    }
+
     var now = Date.now();
 
-    if (now - lastClearAt <= 900) {
+    if (state !== 'armed' && now - lastClearAt <= 900) {
       lastClearAt = 0;
       resetBomb();
       return;
@@ -200,9 +263,7 @@
     if (state === 'setup-time') {
       setMessage('INTRODUCE TIEMPO');
     } else if (state === 'setup-code') {
-      setMessage('INTRODUCE CODIGO');
-    } else if (state === 'armed') {
-      setMessage('CODIGO BORRADO');
+      setMessage('INTRODUCE CODIGO ACTIVACION');
     } else if (state === 'ready') {
       setReadyMessage();
     } else if (state === 'arming-device') {
@@ -251,7 +312,7 @@
     stopSubmitHold();
     ensureAudioContext();
 
-    if (state !== 'ready') {
+    if (isInputLocked || state !== 'ready') {
       return;
     }
 
@@ -275,7 +336,7 @@
     stopSubmitHold();
     configuredSeconds = 300;
     remainingSeconds = configuredSeconds;
-    defuseCode = '';
+    isInputLocked = false;
     state = 'setup-time';
     entry = '';
     setMessage('INTRODUCE TIEMPO');
@@ -322,8 +383,13 @@
       return;
     }
 
-    device.classList.remove('is-standby', 'is-arming', 'is-ready', 'is-armed', 'is-defused', 'is-exploded');
+    device.classList.remove('is-standby', 'is-arming', 'is-ready', 'is-armed', 'is-defused', 'is-exploded', 'is-input-locked', 'is-wrong-code');
     device.classList.add(getDeviceClass());
+
+    if (isInputLocked) {
+      device.classList.add('is-input-locked', 'is-wrong-code');
+    }
+
     time.textContent = getTimeText();
     entryDisplay.textContent = getEntryText();
     mode.textContent = getModeText();
@@ -384,6 +450,18 @@
 
   function setReadyMessage() {
     setMessage('MANTENER PRESIONADO PARA ARMAR');
+  }
+
+  function restoreStateMessage() {
+    if (state === 'setup-time') {
+      setMessage('INTRODUCE TIEMPO');
+    } else if (state === 'setup-code') {
+      setMessage('INTRODUCE CODIGO ACTIVACION');
+    } else if (state === 'ready') {
+      setReadyMessage();
+    } else if (state === 'arming-device') {
+      setMessage('ARMANDO DISPOSITIVO');
+    }
   }
 
   function getModeText() {
@@ -519,6 +597,14 @@
     stopArmingTimer();
     stopSubmitHold();
     stopAlarmTimer();
+    stopWrongCodeTimer();
+  }
+
+  function stopWrongCodeTimer() {
+    if (wrongCodeTimerId) {
+      window.clearTimeout(wrongCodeTimerId);
+      wrongCodeTimerId = null;
+    }
   }
 
   function scheduleNextBeep(delay) {

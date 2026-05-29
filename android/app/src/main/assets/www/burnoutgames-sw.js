@@ -1,4 +1,4 @@
-const BURNOUT_GAMES_CACHE = 'burnout-games-v7';
+const BURNOUT_GAMES_CACHE = 'burnout-games-v16';
 
 const BURNOUT_GAMES_ASSETS = [
   './burnoutgames.html',
