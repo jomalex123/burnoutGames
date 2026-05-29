@@ -1,4 +1,4 @@
-const BURNOUT_GAMES_CACHE = 'burnout-games-v16';
+const BURNOUT_GAMES_CACHE = 'burnout-games-v17';
 
 const BURNOUT_GAMES_ASSETS = [
   './burnoutgames.html',
@@ -15,6 +15,7 @@ const BURNOUT_GAMES_ASSETS = [
   './assets/js/burnoutgames_dominio.js',
   './assets/js/burnoutgames_windows.js',
   './assets/js/burnoutgames_pwa.js',
+  './assets/fonts/28-days-later.woff',
   './images/resources/logoBurnout-3.png',
   './images/resources/windows/back.png',
   './images/resources/windows/burnout.png',
